@@ -1,0 +1,243 @@
+/* ====== Global Styles ====== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top left, #ff1744 0%, #000000 45%, #050505 100%);
+    color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* ====== Card Container ====== */
+.app-container {
+    background: rgba(10, 10, 10, 0.9);
+    border-radius: 18px;
+    padding: 28px 26px;
+    max-width: 480px;
+    width: 100%;
+    box-shadow:
+        0 0 20px rgba(255, 23, 68, 0.25),
+        0 0 40px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+}
+
+/* ====== Header ====== */
+.app-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.app-subtitle {
+    font-size: 0.85rem;
+    color: #b0b0b0;
+    margin-bottom: 20px;
+}
+
+/* Red accent line under title */
+.accent-bar {
+    width: 60px;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #ff1744, #ff5252);
+    margin-bottom: 18px;
+}
+
+/* ====== Form ====== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #bbbbbb;
+}
+
+.password-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #151515;
+    border-radius: 10px;
+    padding: 8px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+input[type="password"] {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #f5f5f5;
+    font-size: 0.95rem;
+}
+
+input[type="password"]::placeholder {
+    color: #777777;
+}
+
+button {
+    margin-top: 6px;
+    border: none;
+    cursor: pointer;
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #ff1744, #d50000);
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 23, 68, 0.45);
+    transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, opacity 0.12s ease-out;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 20px rgba(255, 23, 68, 0.6);
+    opacity: 0.95;
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 0 10px rgba(255, 23, 68, 0.4);
+}
+
+/* ====== Result Block ====== */
+.result-block {
+    margin-top: 10px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.result-label {
+    font-size: 0.85rem;
+    color: #bdbdbd;
+}
+
+.result-value {
+    font-size: 0.9rem;
+}
+
+/* ====== Strength Badge ====== */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* Colors based on strength */
+.badge-very-weak {
+    background: rgba(244, 67, 54, 0.15);
+    color: #ff5252;
+    border: 1px solid rgba(244, 67, 54, 0.8);
+}
+
+.badge-weak {
+    background: rgba(255, 87, 34, 0.15);
+    color: #ffab40;
+    border: 1px solid rgba(255, 138, 101, 0.9);
+}
+
+.badge-medium {
+    background: rgba(255, 214, 0, 0.15);
+    color: #ffd54f;
+    border: 1px solid rgba(255, 235, 59, 0.9);
+}
+
+.badge-strong {
+    background: rgba(76, 175, 80, 0.15);
+    color: #81c784;
+    border: 1px solid rgba(129, 199, 132, 0.9);
+}
+
+.badge-very-strong {
+    background: rgba(0, 230, 118, 0.15);
+    color: #69f0ae;
+    border: 1px solid rgba(129, 199, 132, 0.95);
+}
+
+/* ====== Details List ====== */
+.details-list,
+.suggestions-list {
+    margin-top: 8px;
+    list-style: none;
+    padding-left: 0;
+    font-size: 0.85rem;
+    color: #d0d0d0;
+}
+
+.details-list li,
+.suggestions-list li {
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Status dot for details */
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.status-dot.ok {
+    background: #00e676;
+}
+
+.status-dot.fail {
+    background: #ff1744;
+}
+
+/* Suggestions heading */
+.suggestions-heading {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* No suggestion message */
+.no-suggestions {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #a5d6a7;
+}
+
+/* Small footer text */
+.footer-note {
+    margin-top: 14px;
+    font-size: 0.75rem;
+    color: #757575;
+    text-align: right;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Strength Checker</title>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <h1 class="app-title">Password Strength</h1>
+        <div class="accent-bar"></div>
+        <p class="app-subtitle">
+            Check how strong your password is based on length, character mix, and complexity.
+        </p>
+
+        <form method="POST" action="/">
+            <label for="password">Password</label>
+            <div class="password-input-wrapper">
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Type your password here..."
+                    value="{{ password | default('') }}"
+                    required
+                >
+            </div>
+            <button type="submit">Analyze</button>
+        </form>
+
+        {% if result %}
+            <div class="result-block">
+                <div class="result-row">
+                    <span class="result-label">Score</span>
+                    <span class="result-value">{{ result.score }} / 7</span>
+                </div>
+
+                <div class="result-row">
+                    <span class="result-label">Strength</span>
+                    <span class="result-value">
+                        <span class="badge
+                            {% if result.score <= 2 %}
+                                badge-very-weak
+                            {% elif result.score <= 4 %}
+                                badge-weak
+                            {% elif result.score == 5 %}
+                                badge-medium
+                            {% elif result.score == 6 %}
+                                badge-strong
+                            {% else %}
+                                badge-very-strong
+                            {% endif %}
+                        ">
+                            {{ result.label }}
+                        </span>
+                    </span>
+                </div>
+
+                <div class="result-row">
+                    <span class="result-label">Length</span>
+                    <span class="result-value">
+                        {{ result.details.length.value }} characters
+                        ({{ result.details.length.points }} pts)
+                    </span>
+                </div>
+
+                <ul class="details-list">
+                    <li>
+                        <span class="status-dot {% if result.details.has_upper %}ok{% else %}fail{% endif %}"></span>
+                        Uppercase letters (A–Z)
+                    </li>
+                    <li>
+                        <span class="status-dot {% if result.details.has_lower %}ok{% else %}fail{% endif %}"></span>
+                        Lowercase letters (a–z)
+                    </li>
+                    <li>
+                        <span class="status-dot {% if result.details.has_digit %}ok{% else %}fail{% endif %}"></span>
+                        Numbers (0–9)
+                    </li>
+                    <li>
+                        <span class="status-dot {% if result.details.has_special %}ok{% else %}fail{% endif %}"></span>
+                        Special characters (@, #, $, %, etc.)
+                    </li>
+                </ul>
+
+                {% if result.suggestions %}
+                    <h3 class="suggestions-heading">Suggestions to improve</h3>
+                    <ul class="suggestions-list">
+                        {% for s in result.suggestions %}
+                            <li>• {{ s }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="no-suggestions">
+                        No suggestions. This is a very strong password ✅
+                    </p>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        <p class="footer-note">
+            Local analysis only · Demo tool built with Flask
+        </p>
+    </div>
+</body>
+</html>

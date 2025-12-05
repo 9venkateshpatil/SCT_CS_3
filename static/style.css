@@ -241,3 +241,18 @@ button:active {
     color: #757575;
     text-align: right;
 }
+.forge-title {
+    font-family: "Orbitron", sans-serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.18em;
+    color: #ff1744;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 6px rgba(255, 23, 68, 0.8),
+        0 0 14px rgba(255, 0, 0, 0.5),
+        0 0 28px rgba(255, 0, 0, 0.35);
+}
